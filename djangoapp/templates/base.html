@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Google Font to be used for header text -->
+        <link rel="preconnect" href="https://fonts.gstatic.com"> 
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+        <!-- Google Font for the rest of the text -->
+        <link rel="preconnect" href="https://fonts.gstatic.com"> 
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <!-- Bootstrap Call Link -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <!-- Bootstrap Icon Call Link  -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+        <!-- CSS stylesheet page call -->
+        <link href="/static/styles.css" type="text/css" rel="stylesheet">
+        <title>
+            {% block title %}{% endblock %}
+        </title>
+    </head>
+
+    <body id="page-top">
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse navbar-nav" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="django/templates/index.html">Aaron Vito</a>
+
+            {% for page in pages %}
+                {% if page.output_filename != "./index.html" and page.output_filename != "./portfolio.html" and page.output_filename != "./extra.html" %}
+                    <a class="nav-item nav-link" href="{{ page.output_filename }}">{{ page.title | title }}</a>
+                {% endif %}
+                {% if page.output_filename == "./portfolio.html" %} 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Projects</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="./portfolio.html">Projects</a>
+                          <a class="dropdown-item" href="./extra.html">Dance Reel</a>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+      </div>
+    </nav>
+
+        <div class="content">
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+        <footer>
+            (C) 2021 Aaron Vito (amvito.com)
+        </footer>
+
+  </body>
+
+</html>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
